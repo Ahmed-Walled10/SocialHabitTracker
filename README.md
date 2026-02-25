@@ -52,10 +52,20 @@ This project follows **Clean Architecture** (also known as Onion Architecture), 
 
 ```
 src/
-├── Domain/          # Entities, value objects, domain events, interfaces
-├── Application/     # Use cases, DTOs, commands/queries (CQRS via MediatR)
-├── Infrastructure/  # EF Core, repositories, external services, email, jobs
-└── WebAPI/          # Controllers, middleware, DI configuration, filters
+├── API/
+│   └── SocialHabitTracker.Api              # Endpoints, middleware, DI, filters
+│
+├── Core/
+│   ├── SocialHabitTracker.Domain           # Entities, value objects, domain events, interfaces
+│   └── SocialHabitTracker.Application      # Use cases, DTOs, commands/queries (CQRS, MediatR)
+│
+├── Infrastructure/
+│   ├── SocialHabitTracker.Infrastructure   # External services, email, background jobs
+│   └── SocialHabitTracker.Persistence      # EF Core, DbContext, repositories, migrations
+│
+├── UI/                                     # Frontend (if added later)
+│
+└── test/                                   # Unit & integration tests
 ```
 
 **Key Principles:**
